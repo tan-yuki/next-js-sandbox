@@ -1,11 +1,17 @@
 ## How to start
 
 ```
+npm i
+
 # start db
 docker-compose up -d
 
+# copy env file
+cp env.local .env
+
 # migrate db
 npx prisma migrate dev
+npx prisma generate
 
 # start
 npm run dev
