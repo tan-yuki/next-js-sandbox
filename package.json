@@ -1,5 +1,5 @@
 {
-  "name": "next-js-sandbox",
+  "name": "nextjs-sandbox",
   "version": "0.1.0",
   "scripts": {
     "dev": "next dev",
