@@ -1,11 +1,13 @@
-import { Todo } from '../../models/todo/Todo';
+import { Todo as TodoModel } from '../../models/todo/Todo';
+import { Todo } from './Todo';
 
 type TodoListProps = {
-  todoList: Todo[];
+  todoList: TodoModel[];
+  deleteTodo: (id: number) => void
 }
 
 export function TodoList(props: TodoListProps) {
-  const { todoList } = props; 
+  const { todoList, deleteTodo } = props; 
 
   if (todoList.length < 1) {
     return null;
@@ -13,7 +15,11 @@ export function TodoList(props: TodoListProps) {
 
   return <ul>
     {todoList.map((todo) => {
-      return <li key={todo.id}>{todo.text}</li>
+      return <Todo
+        key={todo.id}
+        todo={todo}
+        deleteTodo={deleteTodo}
+      ></Todo>
     })}
   </ul>;
 }

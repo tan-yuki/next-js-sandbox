@@ -22,11 +22,17 @@ export default function TodoPage(props: TodoPageProps) {
   const [todoList, setTodoList] = useState<Todo[]>(initialTodoList);
 
   const addTodo = useCallback((todo) => {
-    setTodoList([...todoList, todo]);
+    setTodoList((todoList) => [...todoList, todo]);
+  }, [todoList]);
+
+  const deleteTodo = useCallback((id) => {
+    setTodoList((todoList) => {
+      return todoList.filter((todo) => todo.id !== id)
+    });
   }, [todoList]);
 
   return <>
     <AddTodoForm addTodo={addTodo} />
-    <TodoList todoList={todoList} />
+    <TodoList todoList={todoList} deleteTodo={deleteTodo}/>
   </>;
 }
